@@ -9,3 +9,12 @@ body {
     margin: 0;
 }
 
+.LoadingDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://w.wallhaven.cc/full/0w/wallhaven-0w2de6.jpg);
+    background-size: cover;
+    min-height: 100vh;
+}
+

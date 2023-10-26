@@ -1,0 +1,18 @@
+.Movie {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    background-image: url(https://media.istockphoto.com/id/1146367630/vector/abstract-navy-background.jpg?s=612x612&w=0&k=20&c=4odz8sgWFQHHwQ09ouonbKdvotg79421iCgJ8-99RyE=);
+    background-size: cover;
+    color: rgb(29, 95, 194);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    border-radius: 20px;
+    border-style: groove;
+    border-color: rgb(29, 95, 194);
+    box-shadow: 8px 8px 11px 8px rgb(32, 29, 43);
+}
