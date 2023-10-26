@@ -1,0 +1,11 @@
+.Main {
+    background-image: url('../public/images/background-image.jpg');
+    background-size: cover;
+    min-height: 100vh;
+
+}
+
+body {
+    margin: 0;
+}
+
