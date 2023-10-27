@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Home } from "./components/Home/Home";
+import { AddMovie } from "./components/AddMovie/AddMovie";
+import { Contacts } from "./components/Contacts/Contacts";
 import { Catalog } from "./components/Catalog/Catalog";
 
 
@@ -51,6 +53,8 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog movies={movies}/>} />
+            <Route path="/add-movie" element={<AddMovie />} />
+            <Route path="/contacts" element={<Contacts />} />
 
             </Routes>
 
