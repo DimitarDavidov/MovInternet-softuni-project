@@ -10,6 +10,8 @@ import { Home } from "./components/Home/Home";
 import { AddMovie } from "./components/AddMovie/AddMovie";
 import { Contacts } from "./components/Contacts/Contacts";
 import { Catalog } from "./components/Catalog/Catalog";
+import { Login } from "./components/Login/Login";
+import { Register } from "./components/Register/Register";
 
 
 

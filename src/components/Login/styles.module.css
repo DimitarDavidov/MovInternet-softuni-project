@@ -1,0 +1,54 @@
+.LoginDiv {
+    min-height: 100vh;
+}
+
+.LoginForm {
+    background-image: url(https://media.istockphoto.com/id/1146367630/vector/abstract-navy-background.jpg?s=612x612&w=0&k=20&c=4odz8sgWFQHHwQ09ouonbKdvotg79421iCgJ8-99RyE=);
+    color: rgb(29, 95, 194);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 50px;
+    border-style: groove;
+    border-color: rgb(29, 95, 194);
+    margin: auto;
+    width: 35%;
+    padding: 2em;
+    position: relative;
+    top: 100px;
+
+}
+
+.SignInDiv { 
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 35px;
+    border-radius: 20px;
+    border-style: groove;
+    border-color: rgb(29, 95, 194);
+    border-width: 1px;
+    box-shadow: 3px 5px 5px 5px rgb(0, 0, 0);
+
+
+}
+
+.LoginButton {
+    margin-bottom: 10px;
+    box-shadow: 3px 5px 5px 5px rgb(0, 0, 0);
+    margin-top: 40px;
+}
+
+.passwordLogin {
+    margin: auto;
+    margin-top: 4px;
+    margin-bottom: 30px;
+    box-shadow: 3px 5px 5px 5px rgb(0, 0, 0);
+}
+
+.LoginEmail{
+    margin: auto;
+    margin-top: 4px;
+    margin-bottom: 15px;
+    box-shadow: 3px 5px 5px 5px rgb(0, 0, 0);
+}
+
