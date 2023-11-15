@@ -13,7 +13,6 @@ const app = firebase.initializeApp({
   measurementId: "G-HP2RWSY31N"
 });
 
-const auth = getAuth(app)
-connectAuthEmulator(auth, "http://localhost:9099")
+export const auth = getAuth(app)
 
 export default app
