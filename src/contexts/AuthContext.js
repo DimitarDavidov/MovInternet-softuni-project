@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth';
 import { auth } from '../firebase';
+import context from 'react-bootstrap/esm/AccordionContext';
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -29,8 +30,16 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
+  const context = {
+    register,
+    logout,
+    signIn,
+    // userId: user.uid ? null : false,
+    // isAuthenticated: !!user.accessToken
+  }
+
   return (
-    <UserContext.Provider value={{ register, user, logout, signIn }}>
+    <UserContext.Provider value={context}>
       {children}
     </UserContext.Provider>
   );
