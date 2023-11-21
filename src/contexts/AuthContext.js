@@ -34,8 +34,8 @@ export const AuthContextProvider = ({ children }) => {
     register,
     logout,
     signIn,
-    // userId: user.uid ? null : false,
-    // isAuthenticated: !!user.accessToken
+    userId: user.uid ? null : false,
+    isAuthenticated: !!user.accessToken
   }
 
   return (
