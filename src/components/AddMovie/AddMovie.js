@@ -2,6 +2,9 @@ import styles from './AddMovie.module.css'
 
 
 export const AddMovie = () => {
+
+
+
     return (
         <div className={styles.AddMovieDiv}>
 
