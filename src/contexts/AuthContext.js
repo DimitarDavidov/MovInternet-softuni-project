@@ -34,8 +34,11 @@ export const AuthContextProvider = ({ children }) => {
     register,
     logout,
     signIn,
-    userId: user.uid ? null : false,
-    isAuthenticated: !!user.accessToken
+    // If user is null or undefined, user?.uid will safely return undefined.
+    // You can use !!user?.accessToken to convert the value to a boolean.
+    // It will be true if accessToken is a truthy value, and false otherwise.
+    userId: user?.uid ? user.uid : null,
+    isAuthenticated: !!user?.accessToken
   }
 
   return (
