@@ -1,20 +1,16 @@
 import { Navigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { UserAuth } from '../../contexts/AuthContext';
 
 
-export const Logout = async () => {
+export const Logout = () => {
     const {logout} = UserAuth()
 
-    const navigate = useNavigate()
+    useEffect(() => {
+        logout()
+    });
+   
 
-    
-    try {
-        await logout();
-        console.log('You are logout')
-    } catch (e) {
-        console.log(e.message)
-    }
+    return <Navigate to='/' />
     
 }
