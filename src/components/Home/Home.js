@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Home = () => {
 
     return (
-        <div>
+        <div className={styles.HomeDiv}>
 
             <div className="container-fluid text-center">
                 <div className="row content">
@@ -13,7 +13,6 @@ export const Home = () => {
                     </div>
                     <div className="col-sm-8 text-left">
                         <h1 className={styles.welcome}>Welcome to MovInternet</h1>
-                        <h3 className={styles.recommended}>Recommended Movies and Tv-Series:</h3>
                         <div className={styles.Images}>
 
                         <img src="./images/avengers.jpg" className={styles.Image} alt="Cinque Terre" width="225" height="306" /> 
