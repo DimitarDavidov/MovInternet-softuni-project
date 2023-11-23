@@ -22,17 +22,6 @@ function App() {
 
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate()
-    
-    // const handleLogout = async () => {
-    //     try {
-    //         await logout();
-    //         navigate('/');
-    //         console.log('You are logout')
-    //     }catch (e){
-    //         console.log(e.message)
-    //     }
-    // }
     
     useEffect(() => {
         getMovies();

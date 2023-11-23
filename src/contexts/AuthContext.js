@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase/auth';
 import { auth } from '../firebase';
-import context from 'react-bootstrap/esm/AccordionContext';
 
 export const UserContext = createContext();
 

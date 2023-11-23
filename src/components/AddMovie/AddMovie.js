@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import styles from './AddMovie.module.css'
 import { UserAuth } from "../../contexts/AuthContext";
-
+import { v4 as uuidv4 } from 'uuid';
+import {doc, setDoc} from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom';
+import firebase from '../../firebase';
 
 export const AddMovie = () => {
 
@@ -10,34 +13,48 @@ export const AddMovie = () => {
     const [category, setCategory] = useState('');
     const [creator, setCreator] = useState('');
     const [description, setDescription] = useState('');
-    const [image, setImage] = useState('');
-    const [trailer, setTrailer] = useState('');
+    const [imageUrl, setImage] = useState('');
+    const [trailerUrl, setTrailer] = useState('');
+    const [type, setType] = useState('');
     
     const { user } = UserAuth();
 
-    const movie = {
-        title,
-        year,
-        category,
-        creator,
-        description,
-        image,
-        trailer,
-        ownerId: user.uid,
-        likes: 0
-    };
+    const ref = firebase.firestore().collection('movies');
 
-    function onSubmit (movie) {
-        fetch('https://softuni-project-5b6eb-default-rtdb.europe-west1.firebasedatabase.app/movies.json', {
-            method: 'POST',
-            body: JSON.stringify(movie),
-            headers: {
-                "Content-Type": 'application/json'
-            }
-        })
-        .then((res) => {
-            console.log(`${res} :D`)
-        })
+    const navigate = useNavigate()
+
+
+        const onSubmit = async (e) => {
+
+        // if (title.trim() !== ''){
+
+        //     // } TODO: Finish Error Handling
+
+        e.preventDefault()
+
+       const newMovie = {
+            title,
+            year,
+            category,
+            creator,
+            description,
+            type,
+            imageUrl,
+            trailerUrl,
+            id: uuidv4(),
+            ownerId: user.uid,
+            likes: 0
+        }
+
+        try {
+            const movieRef = doc(ref, newMovie.id);
+            await setDoc(movieRef, newMovie);
+            navigate('/')
+        
+        }catch (error) {
+            console.log(error)
+        }   
+        
     }
 
     return (
@@ -46,7 +63,7 @@ export const AddMovie = () => {
         <section className={styles.MovieSection}>
             <div className={styles.AddMovieText}>Add Movie/Tv-Series</div>
 
-            <form className="form-horizontal" onSubmit={onSubmit}>
+            <form className="form-horizontal">
                 <fieldset>
 
                     <div className="form-group">
@@ -61,6 +78,14 @@ export const AddMovie = () => {
                         <label className="col-md-4 control-label" htmlFor="movie-year">Year:</label>
                         <div className="col-md-4">
                             <input name="movie-year" placeholder="2001" className="form-control input-md" type="text" value={year} onChange={(e) => setYear(e.target.value)}/>
+
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label className="col-md-4 control-label" htmlFor="movie-title">Type:</label>
+                        <div className="col-md-4">
+                            <input name="movie-type" placeholder="Movie" className="form-control input-md" type="text" value={type} onChange={(e) => setType(e.target.value)}/>
 
                         </div>
                     </div>
@@ -92,14 +117,14 @@ export const AddMovie = () => {
                     <div className="form-group">
                         <label className="col-md-4 control-label" htmlFor="movie-image">Image</label>
                         <div className="col-md-4">
-                            <input className="form-control" placeholder="Image Link" name="movie-image" value={image} onChange={(e) => setImage(e.target.value)}/>
+                            <input className="form-control" placeholder="Image Link" name="movie-image" value={imageUrl} onChange={(e) => setImage(e.target.value)}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label className="col-md-4 control-label" htmlFor="movie-trailer">Trailer Url:</label>
                         <div className="col-md-4">
-                            <input className="form-control" placeholder="Trailer Link" name="movie-trailer" value={trailer} onChange={(e) => setTrailer(e.target.value)}/>
+                            <input className="form-control" placeholder="Trailer Link" name="movie-trailer" value={trailerUrl} onChange={(e) => setTrailer(e.target.value)}/>
                         </div>
                     </div>
 
@@ -107,7 +132,7 @@ export const AddMovie = () => {
                     <div className="form-group">
                         <label className="col-md-4 control-label" htmlFor="singlebutton"></label>
                         <div className="col-md-4">
-                            <button id="singlebutton" name="singlebutton" className="btn btn-primary" type="submit">Add</button>
+                            <button id="singlebutton" name="singlebutton" className="btn btn-primary" onClick={onSubmit} >Add</button>
                         </div>
                     </div>
 
