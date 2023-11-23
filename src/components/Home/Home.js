@@ -13,7 +13,6 @@ export const Home = () => {
                     </div>
                     <div className="col-sm-8 text-left">
                         <h1 className={styles.welcome}>Welcome to MovInternet</h1>
-                        <p className={styles.intro}>MovInternet is a free platform to find your next favorite movie or tv-series by watching their trailers. You can also add your opinion for the each movie you want in the comments. All you need to do is to be our user. If you dont have an account you can register by clicking the register button. </p>
                         <h3 className={styles.recommended}>Recommended Movies and Tv-Series:</h3>
                         <div className={styles.Images}>
 

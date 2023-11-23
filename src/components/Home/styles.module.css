@@ -39,15 +39,3 @@
     box-shadow: 8px 8px 11px  rgb(0, 0, 0);
     margin-bottom: 2%;
 }
-
-.intro {
-    border-radius: 15px;
-    border: 2px solid;
-    color: rgb(29, 95, 194);
-    background-image: url(https://media.istockphoto.com/id/1146367630/vector/abstract-navy-background.jpg?s=612x612&w=0&k=20&c=4odz8sgWFQHHwQ09ouonbKdvotg79421iCgJ8-99RyE=);
-    font-size: large;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
-    box-shadow: 8px 8px 11px  rgb(0, 0, 0);
-    margin-bottom: 5%;
-}
