@@ -17,6 +17,7 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Logout } from "./components/Logout/Logout";
 import ProtectedRoute from "./ProtectedRoutes";
+import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/add-movie" element={<ProtectedRoute><AddMovie /></ProtectedRoute>} />
                 <Route path="/catalog" element={<Catalog movies={movies}/>} />
+                <Route path="/catalog/:movieId" element={<MovieDetails />} />
             </Routes>
             <Footer />
 
