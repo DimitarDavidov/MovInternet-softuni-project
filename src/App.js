@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { Logout } from "./components/Logout/Logout";
 import ProtectedRoute from "./ProtectedRoutes";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
+import { About } from "./components/About/About";
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
 
                 <Route path="/" element={<Home />} />
                 <Route path="/contacts" element={<Contacts />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/register" element={<Register />} />
