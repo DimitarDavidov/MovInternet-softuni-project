@@ -1,5 +1,5 @@
 import styles from './styles.module.css'
-
+import { Link } from 'react-router-dom'
 import React from "react"
 
 
@@ -23,7 +23,7 @@ export const CatalogMovie = ({
                 <h5>Title: {title}</h5>
                 <h5>Category: {category}</h5>
                 <h5>Type: {type}</h5>
-                <a href="#" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Details</a>
+                <Link to={`/catalog/${id}`} className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Details</Link>
                 {/* <video src={movie.trailerUrl} width="600" height="300" controls="controls" autoPlay='true'></video> */}
                 {/* <iframe
                     width='200'
