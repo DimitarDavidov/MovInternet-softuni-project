@@ -84,7 +84,7 @@
 }
 
 
-.DetailsSection>div>iframe {
+.Trailer {
     border-color: rgb(29, 95, 194);
     border-style: groove;
     border-width: 5px;
@@ -97,5 +97,15 @@
     border: none;
     font-size: x-large;
     padding: 0;
+}
+
+.Details1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.DetailsButtons {
+
 }
 

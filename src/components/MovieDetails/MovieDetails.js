@@ -5,12 +5,15 @@ import { doc } from 'firebase/firestore'
 import firebase from '../../firebase';
 import { UserContext } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import { UserAuth } from '../../contexts/AuthContext';
 
 export const MovieDetails = () => {
 
-    const { movieId } = useParams()
+    const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
-    const { isAuthenticated } = useContext(UserContext)
+    const { isAuthenticated } = useContext(UserContext);
+
+    const {user} = UserAuth()
 
     useEffect(() => {
         const getMovie = async () => {
@@ -42,6 +45,9 @@ export const MovieDetails = () => {
       const youtubeVideoId = getYouTubeVideoId(movie.trailerUrl);
     //   console.log(youtubeVideoId[1])
 
+
+    const isOwner = movie.ownerId === user.uid;
+   
     return (
         <div className={styles.DetailsDiv}>
             <section className={styles.DetailsSection}>
@@ -65,13 +71,21 @@ export const MovieDetails = () => {
                     <h1>Description:</h1>
                     <p>{movie.description}</p>
                     </div>
-                    <div className={styles.DetailsButtons}>
-                        <button><Link to={`/catalog/${movieId}/edit`}>Edit</Link></button>
-                        <button>Delete</button>
-                    </div>
+                    
                 </div>
-                <div>
+                <div className={styles.Details1}>
+                    <div className={styles.Trailer}>
                     <iframe width="400" height="345" frameBorder={0} src={`https://www.youtube.com/embed/${youtubeVideoId[1]}`}></iframe>
+                    </div>   
+                    {isOwner && (                     
+                    <div className={styles.DetailsButtons}>
+                        
+                                <>
+                                     <button><Link to={`/catalog/${movieId}/edit`}>Edit</Link></button>
+                                     <button>Delete</button>
+                                </>
+                    </div>
+                        )}
                 </div>
 
 
