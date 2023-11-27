@@ -77,7 +77,8 @@
 }
 
 .DetailsButtons>button {
-    box-shadow: 3px 5px 2px 2px rgb(2, 10, 21);
+    box-shadow: 3px 2px 2px 2px rgb(2, 10, 21);
+    outline-color: black;
     background-color: rgb(29, 95, 194);
     color: white;
     width: 150px;
@@ -105,7 +106,10 @@
     justify-content: space-evenly;
 }
 
-.DetailsButtons {
+.DetailsButtons > a > button{
+background-color: rgb(29, 95, 194);
+width: 150px;
+box-shadow: 3px 2px 2px 2px rgb(2, 10, 21);
 
 }
 

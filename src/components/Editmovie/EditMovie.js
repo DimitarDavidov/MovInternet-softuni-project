@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import styles from './styles.module.css'
-import { UserAuth } from "../../contexts/AuthContext";
-import { v4 as uuidv4 } from 'uuid';
-import {doc, setDoc} from 'firebase/firestore'
-import { useNavigate } from 'react-router-dom';
 import firebase from '../../firebase';
+import { useParams } from 'react-router';
+import { useEffect, useState } from 'react';
 
 export const EditMovie = () => {
 
@@ -17,6 +14,21 @@ export const EditMovie = () => {
     const [trailerUrl, setTrailer] = useState('');
     const [type, setType] = useState('');
 
+    const { movieId } = useParams();
+    const [movie, setMovie] = useState(null);
+
+    useEffect(() => {
+        const getMovie = async () => {
+            try {
+                const movieInfo = await firebase.firestore().collection('movies').doc(movieId).get();
+                setMovie(movieInfo.data())
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        getMovie()
+    }, [movieId]);
 
     return (
         <div className={styles.EditMovieDiv}>

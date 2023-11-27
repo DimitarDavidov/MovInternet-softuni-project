@@ -31,9 +31,10 @@ export const MovieDetails = () => {
     
 
     if (!movie) {
-        return <div className={styles.LoadingDiv}>
+        return (
+        <div className={styles.LoadingDiv}>
             <img src="./images/m.jpg" alt="logo" width="250" height="250" />
-        </div>
+        </div>)
     }
 
     const getYouTubeVideoId = (url) => {
@@ -80,8 +81,8 @@ export const MovieDetails = () => {
                     {isOwner && (                     
                     <div className={styles.DetailsButtons}>
                                 <>
-                                     <button><Link to={`/catalog/${movieId}/edit`}>Edit</Link></button>
-                                     <button>Delete</button>
+                                <Link to={`/catalog/${movieId}/edit`}><button>Edit</button></Link>
+                                <button>Delete</button>
                                 </>
                     </div>
                         )}
