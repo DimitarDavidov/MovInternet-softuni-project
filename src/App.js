@@ -19,6 +19,7 @@ import { Logout } from "./components/Logout/Logout";
 import ProtectedRoute from "./ProtectedRoutes";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 import { About } from "./components/About/About";
+import { EditMovie } from "./components/Editmovie/EditMovie";
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/add-movie" element={<ProtectedRoute><AddMovie /></ProtectedRoute>} />
                 <Route path="/catalog" element={<Catalog movies={movies}/>} />
                 <Route path="/catalog/:movieId" element={<MovieDetails />} />
+                <Route path="/catalog/:movieId/edit" element={<EditMovie />} />
             </Routes>
             <Footer />
 

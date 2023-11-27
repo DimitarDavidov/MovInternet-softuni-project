@@ -1,0 +1,35 @@
+.EditMovieDiv {
+    min-height: 100vh;
+    position: relative;
+    top: 100px;
+}
+
+.EditMovieText {
+    display: flex;
+    justify-content: center;
+    left: 40%;
+    color: rgb(29, 95, 194);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-large;
+    margin-bottom: 30px;
+    text-decoration: underline;
+
+}
+
+.MovieSection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-image: url(https://media.istockphoto.com/id/1146367630/vector/abstract-navy-background.jpg?s=612x612&w=0&k=20&c=4odz8sgWFQHHwQ09ouonbKdvotg79421iCgJ8-99RyE=);
+    background-size: cover;
+    top: 100px;
+    margin: auto;
+    width: 70%;
+    border-radius: 100px;
+    border-style: groove;
+    border-color: rgb(29, 95, 194);
+    color: rgb(29, 95, 194);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}

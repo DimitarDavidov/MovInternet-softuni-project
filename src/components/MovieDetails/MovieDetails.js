@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { doc } from 'firebase/firestore'
 import firebase from '../../firebase';
 import { UserContext } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 export const MovieDetails = () => {
 
@@ -65,7 +66,7 @@ export const MovieDetails = () => {
                     <p>{movie.description}</p>
                     </div>
                     <div className={styles.DetailsButtons}>
-                        <button>Edit</button>
+                        <button><Link to={`/catalog/${movieId}/edit`}>Edit</Link></button>
                         <button>Delete</button>
                     </div>
                 </div>

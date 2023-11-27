@@ -14,7 +14,6 @@ export const Home = () => {
                     <div className="col-sm-8 text-left">
                         <h1 className={styles.welcome}>Welcome to MovInternet</h1>
                         <div className={styles.Images}>
-
                         <Link to='http://localhost:3000/catalog/4f116ee8-fe52-4cd2-9dbb-851cc041d31d'><img src="./images/avengers.jpg" className={styles.Image} alt="mov" width="225" height="306" /> </Link>
                         <Link to='http://localhost:3000/catalog/464c30e7-5208-458d-abf6-679df67e9ca9'><img src="./images/minions.jpg" className={styles.Image} alt="mov" width="225" height="306 " /></Link>
                         <Link to='http://localhost:3000/catalog/b5b04f15-6b3a-4056-85bd-63ea82fd30db'><img src="./images/bettercallSaul.jpg" className={styles.Image} alt="mov" width="225" height="305 " /> </Link>

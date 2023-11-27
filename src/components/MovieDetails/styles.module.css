@@ -5,6 +5,10 @@
     padding: 25px;
 }
 
+.DetailsDiv a {
+    color:white;
+}
+
 .DetailsSection {
     display: flex;
     background-image: url(https://media.istockphoto.com/id/1146367630/vector/abstract-navy-background.jpg?s=612x612&w=0&k=20&c=4odz8sgWFQHHwQ09ouonbKdvotg79421iCgJ8-99RyE=);
@@ -69,7 +73,7 @@
     border-style: solid;
     box-shadow: 8px 8px 11px 8px #010002;
     border-color: rgb(29, 95, 194);
-    justify-content: space-evenly
+    justify-content: space-evenly;
 }
 
 .DetailsButtons>button {
@@ -78,6 +82,7 @@
     color: white;
     width: 150px;
 }
+
 
 .DetailsSection>div>iframe {
     border-color: rgb(29, 95, 194);
@@ -93,3 +98,4 @@
     font-size: x-large;
     padding: 0;
 }
+
