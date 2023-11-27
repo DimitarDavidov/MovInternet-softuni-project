@@ -44,7 +44,7 @@ export const MovieDetails = () => {
     return (
         <div className={styles.DetailsDiv}>
             <section className={styles.DetailsSection}>
-                <div>
+                <div className={styles.MainInfo}>
                     <img src={movie.imageUrl} alt="movie" height={350} width={260} />
                     <div className={styles.DetailsInfo}>
                         <h5>Title: <span>{movie.title}</span></h5>
@@ -54,13 +54,16 @@ export const MovieDetails = () => {
                         <h5>Year: <span>{movie.year}</span></h5>
                         <h5>Likes: <span>{movie.likes}</span></h5>
                         {isAuthenticated && (
-                            <h5><button>Like</button></h5>
+                            <button><span className="glyphicon glyphicon-heart"></span></button>
                         )}
                     </div>
                 </div>
                 
                 <div className={styles.DetailsDescription}>
+                    <div>
+                    <h1>Description:</h1>
                     <p>{movie.description}</p>
+                    </div>
                     <div className={styles.DetailsButtons}>
                         <button>Edit</button>
                         <button>Delete</button>
