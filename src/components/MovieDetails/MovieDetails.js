@@ -1,13 +1,15 @@
 import { useParams } from 'react-router';
 import styles from './styles.module.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { doc } from 'firebase/firestore'
 import firebase from '../../firebase';
+import { UserContext } from '../../contexts/AuthContext';
 
 export const MovieDetails = () => {
 
     const { movieId } = useParams()
     const [movie, setMovie] = useState(null);
+    const { isAuthenticated } = useContext(UserContext)
 
     useEffect(() => {
         const getMovie = async () => {
@@ -50,8 +52,10 @@ export const MovieDetails = () => {
                         <h5>Type: <span>{movie.type}</span></h5>
                         <h5>Studio: <span>{movie.creator}</span></h5>
                         <h5>Year: <span>{movie.year}</span></h5>
-                        <h5>Likes: </h5>
-                        <h5><button>Like</button></h5>
+                        <h5>Likes: <span>{movie.likes}</span></h5>
+                        {isAuthenticated && (
+                            <h5><button>Like</button></h5>
+                        )}
                     </div>
                 </div>
                 

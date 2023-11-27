@@ -17,6 +17,8 @@ export const CatalogMovie = ({
 
 }) => {
     return (
+        <div className={styles.OneMovie}>
+
         <div className={styles.Movie}>
             <div key={id}>
                 <img src={imageUrl} alt="movie" height={350} width={260} />
@@ -35,6 +37,7 @@ export const CatalogMovie = ({
                     Works!
                 /> */}
             </div>
+        </div>
         </div>
     )
 }
