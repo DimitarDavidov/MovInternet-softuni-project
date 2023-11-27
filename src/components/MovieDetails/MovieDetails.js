@@ -46,7 +46,7 @@ export const MovieDetails = () => {
     //   console.log(youtubeVideoId[1])
 
 
-    const isOwner = movie.ownerId === user.uid;
+    const isOwner = isAuthenticated && movie.ownerId === user.uid;
    
     return (
         <div className={styles.DetailsDiv}>
@@ -60,7 +60,7 @@ export const MovieDetails = () => {
                         <h5>Studio: <span>{movie.creator}</span></h5>
                         <h5>Year: <span>{movie.year}</span></h5>
                         <h5>Likes: <span>{movie.likes}</span></h5>
-                        {isAuthenticated && (
+                        {isAuthenticated && !isOwner && (
                             <button><span className="glyphicon glyphicon-heart"></span></button>
                         )}
                     </div>
@@ -79,7 +79,6 @@ export const MovieDetails = () => {
                     </div>   
                     {isOwner && (                     
                     <div className={styles.DetailsButtons}>
-                        
                                 <>
                                      <button><Link to={`/catalog/${movieId}/edit`}>Edit</Link></button>
                                      <button>Delete</button>
