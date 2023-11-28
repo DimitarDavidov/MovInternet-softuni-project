@@ -67,7 +67,7 @@ function App() {
                 <Route path="/add-movie" element={<ProtectedRoute><AddMovie /></ProtectedRoute>} />
                 <Route path="/catalog" element={<Catalog movies={movies}/>} />
                 <Route path="/catalog/:movieId" element={<MovieDetails />} />
-                <Route path="/catalog/:movieId/edit" element={<EditMovie />} />
+                <Route path="/catalog/:movieId/edit" element={<ProtectedRoute><EditMovie /></ProtectedRoute>} />
             </Routes>
             <Footer />
 
