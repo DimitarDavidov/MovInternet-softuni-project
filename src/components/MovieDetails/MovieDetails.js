@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import styles from './styles.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { doc } from 'firebase/firestore'
@@ -12,7 +12,7 @@ export const MovieDetails = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const { isAuthenticated } = useContext(UserContext);
-
+    const navigate = useNavigate();
     const {user} = UserAuth()
 
     useEffect(() => {
@@ -37,6 +37,8 @@ export const MovieDetails = () => {
         </div>)
     }
 
+
+
     const getYouTubeVideoId = (url) => {
         const regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
         const match = url.match(regex);
@@ -46,9 +48,21 @@ export const MovieDetails = () => {
       const youtubeVideoId = getYouTubeVideoId(movie.trailerUrl);
     //   console.log(youtubeVideoId[1])
 
+      
 
     const isOwner = isAuthenticated && movie.ownerId === user.uid;
-   
+
+    const onDelete = async () => {
+        try{
+            await firebase.firestore().collection('movies').doc(movieId).delete();
+            navigate('/')
+
+        }catch (error){
+            navigate('/')
+        }
+    }
+
+
     return (
         <div className={styles.DetailsDiv}>
             <section className={styles.DetailsSection}>
@@ -82,7 +96,7 @@ export const MovieDetails = () => {
                     <div className={styles.DetailsButtons}>
                                 <>
                                 <Link to={`/catalog/${movieId}/edit`}><button>Edit</button></Link>
-                                <button>Delete</button>
+                                <button onClick={onDelete}>Delete</button>
                                 </>
                     </div>
                         )}
