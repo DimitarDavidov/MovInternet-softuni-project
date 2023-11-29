@@ -4,7 +4,9 @@ import styles from './styles.module.css';
 export const FAQ = () => {
     return (
         <div className={styles.FAQHero}>
-            <div>
+            <div className={styles.FAQBox}>
+
+            <div className={styles.FAQBox1}>
                 <div>
                     <h1>How to register?</h1>
                     <h4>It's easy just press the register button or click <Link to={'/register'}>here</Link>. After that you need to enter your email and create a new password. Keep in mind, that you have to keep your password away from strangers.</h4>
@@ -29,6 +31,7 @@ export const FAQ = () => {
                     <h1>Future updates?</h1>
                     <h4>We are always working on improving our service!</h4>
                 </div>
+            </div>
             </div>
         </div>
     )
