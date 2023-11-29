@@ -15,7 +15,7 @@ export const Home = () => {
                         <h1 className={styles.welcome}>Welcome to MovInternet</h1>
                         <div className={styles.Images}>
                         <Link to='http://localhost:3000/catalog/4f116ee8-fe52-4cd2-9dbb-851cc041d31d'><img src="./images/avengers.jpg" className={styles.Image} alt="mov" width="225" height="306" /> </Link>
-                        <Link to='http://localhost:3000/catalog/11549752-8d27-400d-82a7-9afc5be8e76a'><img src="./images/minions.jpg" className={styles.Image} alt="mov" width="225" height="306 " /></Link>
+                        <Link to='http://localhost:3000/catalog/28770636-5e73-4f6a-89af-c764059e93c2'><img src="./images/minions.jpg" className={styles.Image} alt="mov" width="225" height="306 " /></Link>
                         <Link to='http://localhost:3000/catalog/b5b04f15-6b3a-4056-85bd-63ea82fd30db'><img src="./images/bettercallSaul.jpg" className={styles.Image} alt="mov" width="225" height="305 " /> </Link>
                         <Link to='http://localhost:3000/catalog/ca210c6c-5c68-4a45-9742-5417737155c7'><img src="./images/interstellar.jpg" className={styles.Image} alt="mov" width="225" height="305 " /> </Link>
                         <Link to='http://localhost:3000/catalog/f6431c90-e8b1-4fd1-8752-1165c194dd92'><img src="./images/deadpool.jpg" className={styles.Image} alt="mov" width="225" height="305 " /> </Link>

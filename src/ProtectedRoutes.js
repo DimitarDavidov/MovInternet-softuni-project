@@ -1,5 +1,6 @@
 import { Navigate } from "react-router";
 import { UserAuth } from "./contexts/AuthContext";
+import { useParams } from 'react-router';
 import React from "react";
 
 export const ProtectedRoute = ({children}) => {
@@ -21,3 +22,4 @@ export const GuestRoute = ({children}) => {
 
     return children
 }
+

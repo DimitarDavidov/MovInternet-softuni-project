@@ -3,11 +3,14 @@ import firebase from '../../firebase';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { UserAuth } from '../../contexts/AuthContext';
 
 export const EditMovie = () => {
 
 const { movieId } = useParams();
 const [movie, setMovie] = useState(null);
+const {user} = UserAuth()
+
 
 const [title, setTitle] = useState('');
 const [year, setYear] = useState('');
@@ -17,6 +20,7 @@ const [description, setDescription] = useState('');
 const [imageUrl, setImage] = useState('');
 const [trailerUrl, setTrailer] = useState('');
 const [type, setType] = useState('');
+const [ownerId, setOwnerId] = useState('');
 
 const navigate = useNavigate();
 
@@ -26,7 +30,6 @@ const navigate = useNavigate();
           try {
             const movieInfo = await firebase.firestore().collection('movies').doc(movieId).get();
             setMovie(movieInfo.data());
-    
             setTitle(movieInfo.data()?.title);
             setYear(movieInfo.data()?.year);
             setCategory(movieInfo.data()?.category);
@@ -35,6 +38,7 @@ const navigate = useNavigate();
             setImage(movieInfo.data()?.imageUrl);
             setTrailer(movieInfo.data()?.trailerUrl);
             setType(movieInfo.data()?.type);
+            setOwnerId(movieInfo.data()?.ownerId);
           } catch (error) {
             console.log(error);
           }
@@ -42,7 +46,13 @@ const navigate = useNavigate();
     
         getMovie();
       }, [movieId]);
-    
+
+      console.log(ownerId)
+      console.log(user.uid)
+      if(ownerId !== user.uid) {
+        return navigate('/')
+      }
+
       const handleEditMovie = async (e) => {
         e.preventDefault();
     

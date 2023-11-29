@@ -51,8 +51,15 @@ export const MovieDetails = () => {
       
 
     const isOwner = isAuthenticated && movie.ownerId === user.uid;
-
+    
+  
     const onDelete = async () => {
+       
+
+        if(movie.ownerId !== user.uid){
+            return navigate('/')
+        }
+
         try{
             await firebase.firestore().collection('movies').doc(movieId).delete();
             navigate('/')
