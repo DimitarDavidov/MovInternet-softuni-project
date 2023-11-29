@@ -20,6 +20,7 @@ import ProtectedRoute from "./ProtectedRoutes";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 import { About } from "./components/About/About";
 import { EditMovie } from "./components/Editmovie/EditMovie";
+import { FAQ } from "./components/FAQ/FAQ";
 
 function App() {
 
@@ -68,6 +69,7 @@ function App() {
                 <Route path="/catalog" element={<Catalog movies={movies}/>} />
                 <Route path="/catalog/:movieId" element={<MovieDetails />} />
                 <Route path="/catalog/:movieId/edit" element={<ProtectedRoute><EditMovie /></ProtectedRoute>} />
+                <Route path="/faq" element={<FAQ />} />
             </Routes>
             <Footer />
 
