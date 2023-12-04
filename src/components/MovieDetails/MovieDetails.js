@@ -1,7 +1,6 @@
-import { Navigate, useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import styles from './styles.module.css';
 import { useContext, useEffect, useState } from 'react';
-import { doc } from 'firebase/firestore'
 import firebase from '../../firebase';
 import { UserContext } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
@@ -13,20 +12,23 @@ export const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const { isAuthenticated } = useContext(UserContext);
     const navigate = useNavigate();
-    const {user} = UserAuth()
+    const {user} = UserAuth();
+    const [isLiked, setIsLiked] = useState(false);
 
     useEffect(() => {
         const getMovie = async () => {
             try {
                 const movieInfo = await firebase.firestore().collection('movies').doc(movieId).get();
-                setMovie(movieInfo.data())
+                setMovie(movieInfo.data());
+                const likedUsers = movieInfo.data().likedUsers || [];
+                setIsLiked(likedUsers.includes(user.uid));
             } catch (error) {
-                console.log(error)
+                console.log( error)
             }
         }
 
         getMovie()
-    }, [movieId]);
+    }, [movieId, user.uid]);
 
     
 
@@ -36,6 +38,35 @@ export const MovieDetails = () => {
             <img src="./images/m.jpg" alt="logo" width="250" height="250" />
         </div>)
     }
+
+
+    const handleLike = async () => {
+        if (!isAuthenticated) {
+            return navigate('/login');
+        }
+    
+        try {
+            setIsLiked(true);
+    
+            setMovie((prevMovie) => ({
+                ...prevMovie,
+                likes: prevMovie.likes + 1,
+            }));
+
+            const likes = movie.likes + 1;
+            const likedUsers = movie.likedUsers;
+            likedUsers.push(user.uid)
+            const afterLike = {
+                likes,
+                likedUsers
+            }
+
+            await firebase.firestore().collection('movies').doc(movieId).update(afterLike);
+
+        } catch (error) {
+            console.error('Error updating like:', error);
+        }
+    };
 
 
 
@@ -82,8 +113,8 @@ export const MovieDetails = () => {
                         <h5>Studio: <span>{movie.creator}</span></h5>
                         <h5>Year: <span>{movie.year}</span></h5>
                         <h5>Likes: <span>{movie.likes}</span></h5>
-                        {isAuthenticated && !isOwner && (
-                            <button><span className="glyphicon glyphicon-heart"></span></button>
+                        {isAuthenticated && !isOwner && !isLiked &&(
+                            <button onClick={handleLike}><span className="glyphicon glyphicon-heart"></span></button>
                         )}
                     </div>
                 </div>

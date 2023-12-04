@@ -43,7 +43,8 @@ export const AddMovie = () => {
             trailerUrl,
             id: uuidv4(),
             ownerId: user.uid,
-            likes: 0
+            likes: 0,
+            likedUsers: []
         }
 
         try {
