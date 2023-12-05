@@ -20,7 +20,9 @@ const [description, setDescription] = useState('');
 const [imageUrl, setImage] = useState('');
 const [trailerUrl, setTrailer] = useState('');
 const [type, setType] = useState('');
-const [ownerId, setOwnerId] = useState('');
+const [ownerId, setOwnerId] = useState(''); 
+const [hasError, setHasError] = useState(false);
+const [error, setError] = useState('')
 
 const navigate = useNavigate();
 
@@ -47,8 +49,8 @@ const navigate = useNavigate();
         getMovie();
       }, [movieId]);
 
-      console.log(ownerId)
-      console.log(user.uid)
+    //   console.log(ownerId)
+    //   console.log(user.uid)
       if(ownerId !== user.uid) {
         return navigate('/')
       }
@@ -68,12 +70,17 @@ const navigate = useNavigate();
         };
     
         try {
+            if (title.trim() === '' || year.trim() === '' || category.trim() === '' || creator.trim === '' || description.trim() === '' || type.trim() === '' || imageUrl.trim() === '' || trailerUrl.trim() === ''){
+                throw new Error('Fields should not be empty!')
+            }
           const movieRef = firebase.firestore().collection('movies').doc(movieId);
           await movieRef.update(editedMovie);
           navigate('/');
         } catch (error) {
             //TODO: Error Handeling
           console.error('Error:', error);
+          setHasError(true);
+          setError(error);
         }
       };
 
@@ -82,7 +89,10 @@ const navigate = useNavigate();
 
         <section className={styles.MovieSection}>
             <div className={styles.EditMovieText}>Edit Movie/Tv-Series</div>
-
+            {hasError && (
+                <div class="alert alert-danger">
+                <strong>The movie was not added!</strong> {error.message}</div>
+            )}
             <form className="form-horizontal" onSubmit={handleEditMovie}>
                 <fieldset>
 

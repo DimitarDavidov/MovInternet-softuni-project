@@ -13,30 +13,39 @@ export const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const { signIn } = UserAuth();
-  
+    const [hasError, setHasError] = useState(false);
+    const [error, setError] = useState('')
+
     const onSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        await signIn(email, password)
-        navigate('/')
-      } catch (e) {
-        console.log(e.message)
-      }
+        e.preventDefault();
+        try {
+            await signIn(email, password)
+            navigate('/')
+        } catch (error) {
+            setHasError(true);
+            setError(error);
+            // console.log(e.message)
+        }
     };
-  
+
     return (
         <div className={styles.LoginDiv}>
+
+            {hasError && (
+                <div class="alert alert-danger">
+                    <strong>Login Failed!</strong> Invalid user credentials.</div>
+            )}
 
             <form className={styles.LoginForm} onSubmit={onSubmit} >
                 <div className={styles.SignInDiv}>Sign in</div>
                 <label className="form-label" htmlFor="form2Example1">Email address</label>
                 <div className={`${styles.LoginEmail} form-outline mb-4`}>
-                    <input type="email" name='email' className="form-control" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="email" name='email' className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
                 <label className="form-label" htmlFor="form2Example2">Password</label>
                 <div className={`${styles.passwordLogin} form-outline mb-4`}>
-                    <input type="password" name='password' className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input type="password" name='password' className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
 
                 <button type="submit" className={`${styles.LoginButton} btn btn-primary btn-block mb-4`}>Sign in</button>

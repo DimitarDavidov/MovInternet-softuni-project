@@ -11,26 +11,40 @@ export const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const {register} = UserAuth()
-    const navigate = useNavigate()
+    const {register} = UserAuth();
+    const navigate = useNavigate();
+    const [hasError, setHasError] = useState(false);
+    const [error, setError] = useState('')
 
 
     const onSubmit = async (e) => {
         e.preventDefault();
        
         try {
+            if(confirmPassword !== password){
+                setHasError(true)
+                throw new Error('Password Missmatched!')
+            }
             await register(email, password);
-            navigate('/')
+            navigate('/');
         }catch (error){
-            console.log(error.message)
+            // console.log(error);
+            setHasError(true);
+            setError(error);
         }
         
     }
-
+    
+    
+    
 
     return (
         <div className={styles.RegisterDiv}>
-
+            
+            {hasError && (
+                <div class="alert alert-danger">
+                <strong>Register unseccessful!</strong> {error.message}</div>
+            )}
             <section className={`${styles.RegisterSection} vh-100`}>
 
                 <p className={`${styles.SignUpDiv}`}>Sign up</p>

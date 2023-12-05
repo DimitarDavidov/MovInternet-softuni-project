@@ -16,6 +16,8 @@ export const AddMovie = () => {
     const [imageUrl, setImage] = useState('');
     const [trailerUrl, setTrailer] = useState('');
     const [type, setType] = useState('');
+    const [hasError, setHasError] = useState(false);
+    const [error, setError] = useState('')
     
     const { user } = UserAuth();
 
@@ -26,9 +28,8 @@ export const AddMovie = () => {
 
         const onSubmit = async (e) => {
 
-        // if (title.trim() !== ''){
-
-        //     // } TODO: Finish Error Handling
+        
+            // } TODO: Finish Error Handling
 
         e.preventDefault()
 
@@ -48,12 +49,17 @@ export const AddMovie = () => {
         }
 
         try {
+            if (title.trim() === '' || year.trim() === '' || category.trim() === '' || creator.trim === '' || description.trim() === '' || type.trim() === '' || imageUrl.trim() === '' || trailerUrl.trim() === ''){
+                throw new Error('Fields should not be empty!')
+            }
             const movieRef = doc(ref, newMovie.id);
             await setDoc(movieRef, newMovie);
             navigate('/')
         
         }catch (error) {
-            console.log(error)
+            // console.log(error);
+            setHasError(true);
+            setError(error);
         }   
         
     }
@@ -63,6 +69,11 @@ export const AddMovie = () => {
 
         <section className={styles.MovieSection}>
             <div className={styles.AddMovieText}>Add Movie/Tv-Series</div>
+
+            {hasError && (
+                <div class="alert alert-danger">
+                <strong>The movie was not added!</strong> {error.message}</div>
+            )}
 
             <form className="form-horizontal">
                 <fieldset>
