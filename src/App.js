@@ -14,7 +14,6 @@ import { AddMovie } from "./components/AddMovie/AddMovie";
 import { useEffect, useState } from "react";
 import { Catalog } from "./components/Catalog/Catalog";
 import { AuthContextProvider } from "./contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { Logout } from "./components/Logout/Logout";
 import {ProtectedRoute} from "./ProtectedRoutes";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
