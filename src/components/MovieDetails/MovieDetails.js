@@ -28,7 +28,7 @@ export const MovieDetails = () => {
         }
 
         getMovie()
-    }, [movieId, user.uid]);
+    }, [movieId, user?.uid]);
 
     
 
